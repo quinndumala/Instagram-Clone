@@ -23,6 +23,7 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react/prop-types": "off",
+    "react/jsx-one-expression-per-line": "off",
     "no-debugger": 0,
     "no-alert": 0,
     "no-unused-vars": 1,
