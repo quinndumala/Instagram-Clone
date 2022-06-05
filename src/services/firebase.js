@@ -71,3 +71,33 @@ export const updateProfileFollowers = async (
         : FieldValue.arrayUnion(userID),
     });
 };
+
+export const getPhotos = async (userId, following) => {
+  const result = await firebase
+    .firestore()
+    .collection("photos")
+    .where("userId", "in", following)
+    .get();
+
+  const followedPhotos = result.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id,
+  }));
+
+  const photosWithUserDetails = await Promise.all(
+    followedPhotos.map(async (photo) => {
+      let isLikedByUser = false;
+
+      if (photo.likes.includes(userId)) {
+        isLikedByUser = true;
+      }
+
+      const user = await getUserByUserId(photo.userId);
+      const { username } = user[0];
+
+      return { username, ...photo, isLikedByUser };
+    })
+  );
+
+  return photosWithUserDetails;
+};

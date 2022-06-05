@@ -18,7 +18,7 @@ function useUser() {
     }
   }, [user]);
 
-  return activeUser;
+  return { activeUser };
 }
 
 export default useUser;

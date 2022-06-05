@@ -3,8 +3,8 @@ import Suggestions from "./suggestions";
 import User from "./user";
 
 function Sidebar() {
-  const { docId, fullName, username, userId, following } = useUser();
-
+  const { activeUser } = useUser();
+  const { docId, fullName, username, userId, following } = activeUser;
   return (
     <div className="p-4">
       <User username={username} fullName={fullName} />
