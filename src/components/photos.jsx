@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Post from "./post";
 
 function Photos({ photos }) {
   console.log("photos", photos);
   return (
     <>
       {photos.length > 0 ? (
-        photos.map((content) => <p key={content.docId}>content.imageSrc</p>)
+        photos.map((content) => <Post key={content.docId} content={content} />)
       ) : (
         <p className="text-center text-2xl">Follow people to see photos!</p>
       )}
