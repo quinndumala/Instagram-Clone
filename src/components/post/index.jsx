@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useRef } from "react";
 import Actions from "./actions";
+import Comments from "./comments";
 import Footer from "./footer";
 import Header from "./header";
 import Image from "./image";
@@ -20,6 +21,12 @@ function Post({ content }) {
         handleFocus={handleCommentInputFocus}
       />
       <Footer caption={content.caption} username={content.username} />
+      <Comments
+        docId={content.docId}
+        comments={content.comments}
+        datePosted={content.dateCreated}
+        commentInput={commentInput}
+      />
     </div>
   );
 }
