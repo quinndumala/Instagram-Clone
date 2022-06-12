@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
-import FirebaseContext from "../../context/firebase";
 import UserContext from "../../context/user";
+import { addPostLike } from "../../services/firebase";
 
 function Actions({ docId, totalLikes, isLikedPhoto, handleFocus }) {
   const {
@@ -12,20 +12,11 @@ function Actions({ docId, totalLikes, isLikedPhoto, handleFocus }) {
 
   const [toggleLiked, setToggleLiked] = useState(isLikedPhoto);
   const [likes, setLikes] = useState(totalLikes);
-  const { firebase, FieldValue } = useContext(FirebaseContext);
 
   const handleToggleLiked = async () => {
     setToggleLiked((toggleLiked) => !toggleLiked);
 
-    await firebase
-      .firestore()
-      .collection("photos")
-      .doc(docId)
-      .update({
-        likes: toggleLiked
-          ? FieldValue.arrayRemove(userId)
-          : FieldValue.arrayUnion(userId),
-      });
+    await addPostLike(docId, userId, toggleLiked);
 
     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
   };

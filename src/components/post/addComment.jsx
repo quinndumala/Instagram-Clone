@@ -1,28 +1,21 @@
 import { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import FirebaseContext from "../../context/firebase";
 import UserContext from "../../context/user";
+import { addComment } from "../../services/firebase";
 
 function AddComment({ docId, comments, setComments, commentInput }) {
   const [comment, setComment] = useState("");
-  const { firebase, FieldValue } = useContext(FirebaseContext);
   const {
     user: { displayName },
   } = useContext(UserContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setComments([{ displayName, comment }, ...comments]);
-    setComment("");
 
-    return firebase
-      .firestore()
-      .collection("photos")
-      .doc(docId)
-      .update({
-        comments: FieldValue.arrayUnion({ displayName, comment }),
-      });
+    await addComment(displayName, comment, docId);
+    setComment("");
   };
 
   return (
