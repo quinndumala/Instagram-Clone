@@ -101,3 +101,26 @@ export const getPhotos = async (userId, following) => {
 
   return photosWithUserDetails;
 };
+
+export const addComment = async (displayName, comment, docId) => {
+  console.log("addComment", displayName, comment, docId);
+  firebase
+    .firestore()
+    .collection("photos")
+    .doc(docId)
+    .update({
+      comments: FieldValue.arrayUnion({ displayName, comment }),
+    });
+};
+
+export const addPostLike = async (docId, userId, toggleLiked) => {
+  firebase
+    .firestore()
+    .collection("photos")
+    .doc(docId)
+    .update({
+      likes: toggleLiked
+        ? FieldValue.arrayRemove(userId)
+        : FieldValue.arrayUnion(userId),
+    });
+};
