@@ -10,3 +10,6 @@ steps:
   #Deploy
   - name: "gcr.io/instagram-clone-fbf59/firebase"
     args: ["deploy"]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
