@@ -1,0 +1,12 @@
+steps:
+  #Install
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+
+  #Build
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
+
+  #Deploy
+  - name: "gcr.io/instagram-clone-fbf59/firebase"
+    args: ["deploy"]
