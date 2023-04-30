@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Post from "./post";
 
 function Photos({ photos }) {
-  console.log("photos", photos);
   return (
     <>
       {photos.length > 0 ? (

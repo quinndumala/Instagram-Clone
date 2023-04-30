@@ -70,8 +70,6 @@ function SignUp() {
       setError(message);
       // setSignUpState(INIT_VALUES);
     }
-
-    console.log(userExists);
   };
 
   const handleChange = (e) => {
@@ -83,9 +81,9 @@ function SignUp() {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      console.log("signUpState", signUpState);
-    });
+    // setTimeout(() => {
+    //   console.log("signUpState", signUpState);
+    // });
   }, [signUpState]);
 
   useEffect(() => {

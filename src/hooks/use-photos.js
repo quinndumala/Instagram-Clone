@@ -20,8 +20,6 @@ function usePhotos(userId) {
       setPhotos(timelinePhotos);
     };
 
-    console.log("userId?", userId);
-
     if (userId) getTimelinePhotos();
   }, []);
 

@@ -48,7 +48,6 @@ function Login() {
 
   useEffect(() => {
     document.title = "Login • Instagram";
-    console.log("loginState.password === '' ", loginState.password === "");
   }, []);
 
   useEffect(() => {
@@ -56,7 +55,7 @@ function Login() {
   }, [loginState.emailAddress]);
 
   useEffect(() => {
-    console.log("loginState", loginState);
+    // console.log("loginState", loginState);
   }, [loginState]);
 
   return (

@@ -9,7 +9,6 @@ function Timeline() {
   const { user } = useContext(UserContext);
   const { uid: userId } = user;
   const { photos } = usePhotos(userId);
-  console.log("callUsePhotos", photos);
 
   return (
     <div className="container col-span-2">

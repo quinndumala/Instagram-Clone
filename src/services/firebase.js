@@ -103,7 +103,6 @@ export const getPhotos = async (userId, following) => {
 };
 
 export const addComment = async (displayName, comment, docId) => {
-  console.log("addComment", displayName, comment, docId);
   firebase
     .firestore()
     .collection("photos")

@@ -8,8 +8,6 @@ function Actions({ docId, totalLikes, isLikedPhoto, handleFocus }) {
     user: { uid: userId = "" },
   } = useContext(UserContext);
 
-  console.log("Actions...");
-
   const [toggleLiked, setToggleLiked] = useState(isLikedPhoto);
   const [likes, setLikes] = useState(totalLikes);
 
